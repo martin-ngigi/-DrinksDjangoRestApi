@@ -16,7 +16,7 @@ from rest_framework import status
 #can accept either get or post
 #@api_view('GET', 'POST')
 @api_view(['GET', 'POST'])
-def drink_list(request):
+def drink_list(request, format=None):
 
     if request.method == 'GET':
         #1. get all drinks
@@ -55,7 +55,7 @@ def drink_list(request):
         #3. return python data
 
 @api_view(['GET', 'PUT', 'DELET'])
-def drink_detail(request, id): #id is frpm urls.py
+def drink_detail(request, id, format=None): #id is frpm urls.py
     try:
         drink = Drink.objects.get(pk=id)
     except Drink.DoesNotExist:
