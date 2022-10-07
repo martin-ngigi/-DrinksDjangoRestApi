@@ -1,6 +1,9 @@
 # used for creating endpoints 
 # endpoints are certain urls you can obtain data from
 
+#   YOUTUBE LINK
+#https://www.youtube.com/watch?v=i5JykvxUk_A&t=44s
+
 from dataclasses import dataclass
 from django.http import JsonResponse
 from django.urls import is_valid_path
