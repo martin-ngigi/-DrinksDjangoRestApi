@@ -23,17 +23,21 @@ def drink_list(request):
         #2. serialize them
         #3. return json
 
-        #1. get all drinks
+        # #1. get all drinks
         drinks = Drink.objects.all()
 
-        #2. serialize them
-        serializer = DrinkSerializer(drinks, many=True)
+        # #2. serialize them
+        # serializer = DrinkSerializer(drinks, many=True)
 
-        #3. return json array
-        #return JsonResponse(serializer.data, safe=False)
+        # #3. return json array
+        # #return JsonResponse(serializer.data, safe=False)
         
-        #3. return json object
-        return JsonResponse({'drinks':serializer.data})
+        # #3. return json object
+        # return JsonResponse({'drinks':serializer.data})
+
+        serializer = DrinkSerializer(drinks, many=True)
+        return Response(serializer.data)
+
 
     if request.method == 'POST':
         #1.get python data
@@ -69,4 +73,5 @@ def drink_detail(request, id): #id is frpm urls.py
         #else show error message
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        pass
+        drink.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
