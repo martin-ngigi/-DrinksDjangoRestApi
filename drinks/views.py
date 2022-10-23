@@ -57,7 +57,7 @@ def drink_list(request, format=None):
         #2. decerialize it (convert from json to python)
         #3. return python data
 
-@api_view(['GET', 'PUT', 'DELET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def drink_detail(request, id, format=None): #id is frpm urls.py
     try:
         drink = Drink.objects.get(pk=id)
